@@ -37,3 +37,69 @@ autocert-server can optionally run a script after a new certificate is acquired,
 
 ## Credits
 The project is maintained by [Dekode](https://en.dekode.no/) and is sponsored by the [Norwegian Government Security and Service Organisation](https://dss.dep.no/english).
+
+## Installation
+
+### WordPress setup
+Install WordPress as a multisite network.
+
+Install [Mercator](https://github.com/humanmade/Mercator) or WordPress MU Domain Mapping (https://wordpress.org/plugins/wordpress-mu-domain-mapping/), and add your domain aliases.
+
+Install [WP ACME](https://github.com/dss-web/wp-acme). If you install it as an mu-plugin, you only need the file `wp-acme.php`
+Define a secret key that will be shared between WordPress and the ACME client. You can either add
+`define( 'WP_ACME_SECRET_KEY', 'your-secret-key' );` to your `wp-config.php` or set a site option named `wp_acme_secret_key`, e.g. by doing `update_site_option( 'wp_acme_secret_key', 'your-secret-key' );`
+There is no user interface or anything else to configure for this plugin.
+
+Install [WP Autocert](https://github.com/dss-web/wp-autocert), go to Settings > WP Autocrat (`/wp-admin/network/settings.php?page=wp-autocert`), select the domains you want to get certificates for, and note the API Key. It will be used as a shared secret when communicating with the autocert-server script.
+
+### Director node setup
+On your server node that will function as your director node (it can even be your local machine), download [acme-tiny-wp](https://github.com/DekodeInteraktiv/acme-tiny-wp) and [autocert-server](https://github.com/dss-web/autocert-server).
+
+Create a Let’s Encrypt account key (put it wherever it suites you, but make it readable by root only):
+```
+$ sudo mkdir -p /etc/ssl/acme
+$ sudo chmod 0700 /etc/ssl/acme
+$ sudo openssl genrsa 4096 > /etc/ssl/acme/accountkey.pem
+$ sudo chmod 0400 /etc/ssl/acme/accountkey.pem  
+$ sudo chown -R root:root /etc/ssl/acme
+```
+
+Copy the autocert-server example configuration and modify it with your info. Remember to make it readable by root only.
+```
+$ sudo cp example.ini my-config.ini  
+$ chmod 0600 my-config.php  
+$ sudo chown root:root my-config.php
+```
+
+#### Explanation of autocert-server configuration directives
+
+`[general]`
+Directive | Use
+--------- | ---
+`post_hook` | A command to run whenever your certificates have changed. E.g. reload your webserver.
+
+`[wordpress]`
+Directive | Use
+--------- | ---
+`url` | The URL to your WordPress installation where WP Autocert is installed.
+`shared_secret` | The shared secret from WP Autocert.
+
+`[certificates]`
+Directive | Use
+--------- | ---
+`ca_client` | The autocert-server CA client to use. For now, only `acme-tiny-wp` is supported.
+
+`[acme-tiny-wp]`
+Directive | Use
+--------- | ---
+`acme_tiny_wp_path` | The full path to the `acme_tiny_wp.py` script.
+`openssl_conf` | The full path to your OpenSSL configurations file. Usually `/etc/ssl/openssl.cnf`
+`wp_url` | The URL to your WordPress installation where WP ACME is installed.
+`wp_secret` | The shared secret with WP ACME.
+`server` | The ACME server to use. Use `https://acme-staging.api.letsencrypt.org/directory` for staging/testing and `https://acme-v01.api.letsencrypt.org/directory` for production.
+`cert_key` | The full path to where the private certificate key is stored. If it doesn’t exists, it will be created for you.
+`cert_file` | The full path to where the certificate will be stored.
+`cert_csr` | The full path to where the CSR will be stored.  
+`acme_account_key` | The full path to where the ACME account key is stored. If it doesn’t exists, it will be created for you.
+
+
