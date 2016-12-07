@@ -109,9 +109,9 @@ Directive | Use | Default value
 `cert_key` | The full path to where the private certificate key is stored. If it doesn’t exists, it will be created for you. | /etc/ssl/acme/privatekey.pem
 `cert_file` | The full path to where the certificate will be stored. | /etc/ssl/acme/cert.pem
 `chain_file` | The full path to where the intermediate certificate will be stored. | /etc/ssl/acme/chain.pem
-`fullchain_file` | The full path to where the full chain will be stored. | /etc/ssl/acme/fullshain.pem
-`cert_csr` | The full path to where the CSR will be stored.  
-`acme_account_key` | The full path to where the ACME account key is stored. If it doesn’t exists, it will be created for you.
+`fullchain_file` | The full path to where the full chain will be stored. | /etc/ssl/acme/fullchain.pem
+`cert_csr` | The full path to where the CSR will be stored. | /etc/ssl/acme/cert.csr
+`acme_account_key` | The full path to where the ACME account key is stored. If it doesn’t exists, it will be created for you. | /etc/ssl/acme/accountkey.pem
 
 ## Usage
 
