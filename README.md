@@ -105,7 +105,7 @@ Directive | Use | Default value
 `wp_url` | The URL to your WordPress installation where WP ACME is installed. | No default value. Must be provided.
 `wp_secret` | The shared secret with WP ACME. | No default value. Must be provided.
 `openssl_conf` | The full path to your OpenSSL configurations file. Usually `/etc/ssl/openssl.cnf` | /etc/ssl/openssl.cnf
-`server` | The ACME server to use. Use `https://acme-staging.api.letsencrypt.org/directory` for staging/testing and `https://acme-v01.api.letsencrypt.org/directory` for production. | https://acme-v01.api.letsencrypt.org
+`server` | The ACME server to use. Use `https://acme-staging.api.letsencrypt.org` for staging/testing and `https://acme-v01.api.letsencrypt.org` for production. | https://acme-v01.api.letsencrypt.org
 `cert_key` | The full path to where the private certificate key is stored. If it doesn’t exists, it will be created for you. | /etc/ssl/acme/privatekey.pem
 `cert_file` | The full path to where the certificate will be stored. | /etc/ssl/acme/cert.pem
 `chain_file` | The full path to where the intermediate certificate will be stored. | /etc/ssl/acme/chain.pem
