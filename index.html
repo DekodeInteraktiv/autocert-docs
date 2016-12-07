@@ -19,7 +19,14 @@
     </section>
 
     <section class="main-content">
-      <h2>
+      <h1>
+<a id="autocert-docs" class="anchor" href="#autocert-docs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>autocert-docs</h1>
+
+<p>Automated installation of TLS certificates for WordPress multisites</p>
+
+<p><a href="https://dekodeinteraktiv.github.io/autocert-docs/">Start reading the docs »</a></p>
+
+<h2>
 <a id="audience" class="anchor" href="#audience" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Audience</h2>
 
 <p>You should have a grasp of what DevOps is and be comfortable running web servers for WordPress.</p>
@@ -39,16 +46,16 @@
 
 <p>The default challenge solving (domain verification) by ACME clients is to put files in a predetermined directory from the webserver’s document root (<code>/.well-known/acme-challenge</code>). However, if you have a web node cluster or are running the certification acquirement process from a machine that is not part of your web cluster, you may run into issues.</p>
 
-<p>To solve this, we have a WordPress plugin, WP ACME that will answer the ACME challenges presented by Let’s Encrypt.</p>
+<p>To solve this, we have a WordPress plugin, <a href="https://github.com/dss-web/wp-acme">WP ACME</a> that will answer the ACME challenges presented by Let’s Encrypt.</p>
 
-<p>WP ACME must get the challenges from a compatible ACME client. We’ve created both a customized fork of acme tiny and an authentication plugin for Certbot (the official Let’s Encrypt client). Since Certbot did not suit us that well, we don’t maintain the authentication plugin any longer, but you are free to fork it.</p>
+<p>WP ACME must get the challenges from a compatible ACME client. We’ve created both a customized fork of <a href="https://github.com/DekodeInteraktiv/acme-tiny-wp">acme-tiny</a> and an <a href="https://github.com/dss-web/certbot-wordpress">authentication plugin for WordPress for Certbot</a> (the official Let’s Encrypt client). Since Certbot did not suit us that well, we don’t maintain the authentication plugin any longer, but you are free to fork it. We strongly recommend you use the acme-tiny fork.</p>
 
 <h3>
 <a id="automated-client-initialization" class="anchor" href="#automated-client-initialization" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Automated client initialization</h3>
 
-<p>To get a list of active domains from WordPress we created a WordPress plugin: WP Autocert.</p>
+<p>To get a list of active domains from WordPress we created a WordPress plugin: <a href="https://github.com/dss-web/wp-autocert">WP Autocert</a>.</p>
 
-<p>The autocert-server script can be run in a cronjob and will pull the active domains from WordPress match them with the existing certificate and get a new one – with optional ACME challenge solving in WordPress.</p>
+<p>Then the <a href="https://github.com/dss-web/autocert-server">autocert-server</a> script can be run in a cronjob and will pull the active domains from WordPress match them with the existing certificate and get a new one – with optional ACME challenge solving in WordPress.</p>
 
 <p>autocert-server can optionally run a script after a new certificate is acquired, which lets you reload your web server or distribute the certificate to your nodes.</p>
 
