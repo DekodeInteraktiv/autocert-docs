@@ -10,7 +10,7 @@ You should have a grasp of what DevOps is and be comfortable running web servers
 We are running a WordPress multisite network with tens of subsites with domain mapping, and are both removing and adding sites on a regular basis. We want to have TLS certificates for those domains installed automatically. Extending the current project to support hundreds or thousands of sites should be possible without too much effort.
 
 ## Project Outline
-The project consists of several sub-projects. Some of these may be used alone, with the other subprojects or with 3rd party projects.
+The project consists of several sub-projects. Some of these may be used alone, with the other subprojects or with 3rd party projects. All sub-projects are maintained individually in their own repositories on GitHub.
 
 ### ACME challenge solving with WordPress
 The default challenge solving (domain verification) by ACME clients is to put files in a predetermined directory from the webserver’s document root (`/.well-known/acme-challenge`). However, if you have a web node cluster or are running the certification acquirement process from a machine that is not part of your web cluster, you may run into issues.
