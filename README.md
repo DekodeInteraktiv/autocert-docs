@@ -106,4 +106,9 @@ Directive | Use
 `cert_csr` | The full path to where the CSR will be stored.  
 `acme_account_key` | The full path to where the ACME account key is stored. If it doesn’t exists, it will be created for you.
 
+## Usage
 
+Run the autocert-server script:
+`$ sudo ./autocert.php -c my-config.ini`
+
+To have the process fully automated, put the script in a crontab. Run it every minute if you like.
