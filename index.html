@@ -19,14 +19,7 @@
     </section>
 
     <section class="main-content">
-      <h1>
-<a id="autocert-docs" class="anchor" href="#autocert-docs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>autocert-docs</h1>
-
-<p>Automated installation of TLS certificates for WordPress multisites</p>
-
-<p><a href="https://dekodeinteraktiv.github.io/autocert-docs/">Start reading the docs »</a></p>
-
-<h2>
+      <h2>
 <a id="audience" class="anchor" href="#audience" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Audience</h2>
 
 <p>You should have a grasp of what DevOps is and be comfortable running web servers for WordPress.</p>
@@ -39,7 +32,29 @@
 <h2>
 <a id="project-outline" class="anchor" href="#project-outline" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Project Outline</h2>
 
-<p>The project consists of several sub-projects. Some of these may be used alone, with the other subprojects or with 3rd party projects.</p>
+<p>The project consists of several sub-projects. Some of these may be used alone, with the other subprojects or with 3rd party projects. All sub-projects are maintained individually in their own repositories on GitHub.</p>
+
+<h3>
+<a id="current-sub-projects" class="anchor" href="#current-sub-projects" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Current sub-projects</h3>
+
+<ul>
+<li>
+<a href="https://github.com/dss-web/wp-acme">WP ACME</a> – Answers ACME challenges in WordPress.</li>
+<li>
+<a href="https://github.com/DekodeInteraktiv/acme-tiny-wp">acme-tiny-wp</a> – Use WordPress for ACME challenges.</li>
+<li>
+<a href="https://github.com/dss-web/wp-autocert">WP Autocert</a> – Provides us with a list of domains and updates them to use https.</li>
+<li>
+<a href="https://github.com/dss-web/autocert-server">autocert-server</a> – Fetches domain names from WP and installs certificates.</li>
+</ul>
+
+<h3>
+<a id="discontinued-sub-projects" class="anchor" href="#discontinued-sub-projects" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Discontinued sub-projects</h3>
+
+<ul>
+<li>
+<a href="https://github.com/dss-web/certbot-wordpress">WP auth plugin for Certbot</a> – Use WordPress for ACME challenges with Certbot (no longer maintained).</li>
+</ul>
 
 <h3>
 <a id="acme-challenge-solving-with-wordpress" class="anchor" href="#acme-challenge-solving-with-wordpress" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ACME challenge solving with WordPress</h3>
@@ -48,7 +63,7 @@
 
 <p>To solve this, we have a WordPress plugin, <a href="https://github.com/dss-web/wp-acme">WP ACME</a> that will answer the ACME challenges presented by Let’s Encrypt.</p>
 
-<p>WP ACME must get the challenges from a compatible ACME client. We’ve created both a customized fork of <a href="https://github.com/DekodeInteraktiv/acme-tiny-wp">acme-tiny</a> and an <a href="https://github.com/dss-web/certbot-wordpress">authentication plugin for WordPress for Certbot</a> (the official Let’s Encrypt client). Since Certbot did not suit us that well, we don’t maintain the authentication plugin any longer, but you are free to fork it. We strongly recommend you use the acme-tiny fork.</p>
+<p>WP ACME must get the challenges from a compatible ACME client. We’ve created both a <a href="https://github.com/DekodeInteraktiv/acme-tiny-wp">customized fork of acme-tiny</a> and an <a href="https://github.com/dss-web/certbot-wordpress">authentication plugin for WordPress for Certbot</a> (the official Let’s Encrypt client). Since Certbot did not suit us that well, we don’t maintain the authentication plugin any longer, but you are free to fork it. We strongly recommend you use the acme-tiny fork.</p>
 
 <h3>
 <a id="automated-client-initialization" class="anchor" href="#automated-client-initialization" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Automated client initialization</h3>
