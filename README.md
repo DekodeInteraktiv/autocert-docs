@@ -15,14 +15,14 @@ The project consists of several sub-projects. Some of these may be used alone, w
 ### ACME challenge solving with WordPress
 The default challenge solving (domain verification) by ACME clients is to put files in a predetermined directory from the webserver’s document root (`/.well-known/acme-challenge`). However, if you have a web node cluster or are running the certification acquirement process from a machine that is not part of your web cluster, you may run into issues.
 
-To solve this, we have a WordPress plugin, WP ACME that will answer the ACME challenges presented by Let’s Encrypt.
+To solve this, we have a WordPress plugin, [WP ACME](https://github.com/dss-web/wp-acme) that will answer the ACME challenges presented by Let’s Encrypt.
 
-WP ACME must get the challenges from a compatible ACME client. We’ve created both a customized fork of acme tiny and an authentication plugin for Certbot (the official Let’s Encrypt client). Since Certbot did not suit us that well, we don’t maintain the authentication plugin any longer, but you are free to fork it.
+WP ACME must get the challenges from a compatible ACME client. We’ve created both a customized fork of [acme-tiny](https://github.com/DekodeInteraktiv/acme-tiny-wp) and an [authentication plugin for WordPress for Certbot](https://github.com/dss-web/certbot-wordpress) (the official Let’s Encrypt client). Since Certbot did not suit us that well, we don’t maintain the authentication plugin any longer, but you are free to fork it. We strongly recommend you use the acme-tiny fork.
 
 ### Automated client initialization
-To get a list of active domains from WordPress we created a WordPress plugin: WP Autocert.
+To get a list of active domains from WordPress we created a WordPress plugin: [WP Autocert](https://github.com/dss-web/wp-autocert).
 
-The autocert-server script can be run in a cronjob and will pull the active domains from WordPress match them with the existing certificate and get a new one – with optional ACME challenge solving in WordPress.
+Then the [autocert-server](https://github.com/dss-web/autocert-server) script can be run in a cronjob and will pull the active domains from WordPress match them with the existing certificate and get a new one – with optional ACME challenge solving in WordPress.
 
 autocert-server can optionally run a script after a new certificate is acquired, which lets you reload your web server or distribute the certificate to your nodes.
 
