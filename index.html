@@ -187,45 +187,65 @@ $ sudo chown root:root my-config.php
 <tr>
 <th>Directive</th>
 <th>Use</th>
+<th>Default value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>acme_tiny_wp_path</code></td>
 <td>The full path to the <code>acme_tiny_wp.py</code> script.</td>
+<td>No default value. Must be provided.</td>
+</tr>
+<tr>
+<td><code>wp_url</code></td>
+<td>The URL to your WordPress installation where WP ACME is installed.</td>
+<td>No default value. Must be provided.</td>
+</tr>
+<tr>
+<td><code>wp_secret</code></td>
+<td>The shared secret with WP ACME.</td>
+<td>No default value. Must be provided.</td>
 </tr>
 <tr>
 <td><code>openssl_conf</code></td>
 <td>The full path to your OpenSSL configurations file. Usually <code>/etc/ssl/openssl.cnf</code>
 </td>
-</tr>
-<tr>
-<td><code>wp_url</code></td>
-<td>The URL to your WordPress installation where WP ACME is installed.</td>
-</tr>
-<tr>
-<td><code>wp_secret</code></td>
-<td>The shared secret with WP ACME.</td>
+<td>/etc/ssl/openssl.cnf</td>
 </tr>
 <tr>
 <td><code>server</code></td>
 <td>The ACME server to use. Use <code>https://acme-staging.api.letsencrypt.org/directory</code> for staging/testing and <code>https://acme-v01.api.letsencrypt.org/directory</code> for production.</td>
+<td><a href="https://acme-v01.api.letsencrypt.org">https://acme-v01.api.letsencrypt.org</a></td>
 </tr>
 <tr>
 <td><code>cert_key</code></td>
 <td>The full path to where the private certificate key is stored. If it doesn’t exists, it will be created for you.</td>
+<td>/etc/ssl/acme/privatekey.pem</td>
 </tr>
 <tr>
 <td><code>cert_file</code></td>
 <td>The full path to where the certificate will be stored.</td>
+<td>/etc/ssl/acme/cert.pem</td>
+</tr>
+<tr>
+<td><code>chain_file</code></td>
+<td>The full path to where the intermediate certificate will be stored.</td>
+<td>/etc/ssl/acme/chain.pem</td>
+</tr>
+<tr>
+<td><code>fullchain_file</code></td>
+<td>The full path to where the full chain will be stored.</td>
+<td>/etc/ssl/acme/fullshain.pem</td>
 </tr>
 <tr>
 <td><code>cert_csr</code></td>
 <td>The full path to where the CSR will be stored.</td>
+<td></td>
 </tr>
 <tr>
 <td><code>acme_account_key</code></td>
 <td>The full path to where the ACME account key is stored. If it doesn’t exists, it will be created for you.</td>
+<td></td>
 </tr>
 </tbody>
 </table>
