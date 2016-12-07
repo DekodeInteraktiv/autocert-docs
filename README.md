@@ -71,6 +71,11 @@ $ sudo chmod 0600 my-config.php
 $ sudo chown root:root my-config.php
 ```
 
+Install the autocert-server dependencies:
+```
+$ composer install
+```
+
 #### Explanation of autocert-server configuration directives
 
 `[general]`
