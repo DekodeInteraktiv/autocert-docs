@@ -79,6 +79,160 @@
 
 <p>The project is maintained by <a href="https://en.dekode.no/">Dekode</a> and is sponsored by the <a href="https://dss.dep.no/english">Norwegian Government Security and Service Organisation</a>.</p>
 
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
+
+<h3>
+<a id="wordpress-setup" class="anchor" href="#wordpress-setup" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>WordPress setup</h3>
+
+<p>Install WordPress as a multisite network.</p>
+
+<p>Install <a href="https://github.com/humanmade/Mercator">Mercator</a> or WordPress MU Domain Mapping (<a href="https://wordpress.org/plugins/wordpress-mu-domain-mapping/">https://wordpress.org/plugins/wordpress-mu-domain-mapping/</a>), and add your domain aliases.</p>
+
+<p>Install <a href="https://github.com/dss-web/wp-acme">WP ACME</a>. If you install it as an mu-plugin, you only need the file <code>wp-acme.php</code>
+Define a secret key that will be shared between WordPress and the ACME client. You can either add
+<code>define( 'WP_ACME_SECRET_KEY', 'your-secret-key' );</code> to your <code>wp-config.php</code> or set a site option named <code>wp_acme_secret_key</code>, e.g. by doing <code>update_site_option( 'wp_acme_secret_key', 'your-secret-key' );</code>
+There is no user interface or anything else to configure for this plugin.</p>
+
+<p>Install <a href="https://github.com/dss-web/wp-autocert">WP Autocert</a>, go to Settings &gt; WP Autocrat (<code>/wp-admin/network/settings.php?page=wp-autocert</code>), select the domains you want to get certificates for, and note the API Key. It will be used as a shared secret when communicating with the autocert-server script.</p>
+
+<h3>
+<a id="director-node-setup" class="anchor" href="#director-node-setup" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Director node setup</h3>
+
+<p>On your server node that will function as your director node (it can even be your local machine), download <a href="https://github.com/DekodeInteraktiv/acme-tiny-wp">acme-tiny-wp</a> and <a href="https://github.com/dss-web/autocert-server">autocert-server</a>.</p>
+
+<p>Create a Let’s Encrypt account key (put it wherever it suites you, but make it readable by root only):</p>
+
+<pre><code>$ sudo mkdir -p /etc/ssl/acme
+$ sudo chmod 0700 /etc/ssl/acme
+$ sudo openssl genrsa 4096 &gt; /etc/ssl/acme/accountkey.pem
+$ sudo chmod 0400 /etc/ssl/acme/accountkey.pem  
+$ sudo chown -R root:root /etc/ssl/acme
+</code></pre>
+
+<p>Copy the autocert-server example configuration and modify it with your info. Remember to make it readable by root only.</p>
+
+<pre><code>$ sudo cp example.ini my-config.ini  
+$ chmod 0600 my-config.php  
+$ sudo chown root:root my-config.php
+</code></pre>
+
+<h4>
+<a id="explanation-of-autocert-server-configuration-directives" class="anchor" href="#explanation-of-autocert-server-configuration-directives" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Explanation of autocert-server configuration directives</h4>
+
+<p><code>[general]</code></p>
+
+<table>
+<thead>
+<tr>
+<th>Directive</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>post_hook</code></td>
+<td>A command to run whenever your certificates have changed. E.g. reload your webserver.</td>
+</tr>
+</tbody>
+</table>
+
+<p><code>[wordpress]</code></p>
+
+<table>
+<thead>
+<tr>
+<th>Directive</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>url</code></td>
+<td>The URL to your WordPress installation where WP Autocert is installed.</td>
+</tr>
+<tr>
+<td><code>shared_secret</code></td>
+<td>The shared secret from WP Autocert.</td>
+</tr>
+</tbody>
+</table>
+
+<p><code>[certificates]</code></p>
+
+<table>
+<thead>
+<tr>
+<th>Directive</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ca_client</code></td>
+<td>The autocert-server CA client to use. For now, only <code>acme-tiny-wp</code> is supported.</td>
+</tr>
+</tbody>
+</table>
+
+<p><code>[acme-tiny-wp]</code></p>
+
+<table>
+<thead>
+<tr>
+<th>Directive</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>acme_tiny_wp_path</code></td>
+<td>The full path to the <code>acme_tiny_wp.py</code> script.</td>
+</tr>
+<tr>
+<td><code>openssl_conf</code></td>
+<td>The full path to your OpenSSL configurations file. Usually <code>/etc/ssl/openssl.cnf</code>
+</td>
+</tr>
+<tr>
+<td><code>wp_url</code></td>
+<td>The URL to your WordPress installation where WP ACME is installed.</td>
+</tr>
+<tr>
+<td><code>wp_secret</code></td>
+<td>The shared secret with WP ACME.</td>
+</tr>
+<tr>
+<td><code>server</code></td>
+<td>The ACME server to use. Use <code>https://acme-staging.api.letsencrypt.org/directory</code> for staging/testing and <code>https://acme-v01.api.letsencrypt.org/directory</code> for production.</td>
+</tr>
+<tr>
+<td><code>cert_key</code></td>
+<td>The full path to where the private certificate key is stored. If it doesn’t exists, it will be created for you.</td>
+</tr>
+<tr>
+<td><code>cert_file</code></td>
+<td>The full path to where the certificate will be stored.</td>
+</tr>
+<tr>
+<td><code>cert_csr</code></td>
+<td>The full path to where the CSR will be stored.</td>
+</tr>
+<tr>
+<td><code>acme_account_key</code></td>
+<td>The full path to where the ACME account key is stored. If it doesn’t exists, it will be created for you.</td>
+</tr>
+</tbody>
+</table>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Run the autocert-server script:
+<code>$ sudo ./autocert.php -c my-config.ini</code></p>
+
+<p>To have the process fully automated, put the script in a crontab. Run it every minute if you like.</p>
+
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/DekodeInteraktiv/autocert-docs">Autocert-docs</a> is maintained by <a href="https://github.com/DekodeInteraktiv">DekodeInteraktiv</a>.</span>
 
