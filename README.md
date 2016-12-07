@@ -74,22 +74,26 @@ $ sudo chown root:root my-config.php
 #### Explanation of autocert-server configuration directives
 
 `[general]`
+
 Directive | Use
 --------- | ---
 `post_hook` | A command to run whenever your certificates have changed. E.g. reload your webserver.
 
 `[wordpress]`
+
 Directive | Use
 --------- | ---
 `url` | The URL to your WordPress installation where WP Autocert is installed.
 `shared_secret` | The shared secret from WP Autocert.
 
 `[certificates]`
+
 Directive | Use
 --------- | ---
 `ca_client` | The autocert-server CA client to use. For now, only `acme-tiny-wp` is supported.
 
 `[acme-tiny-wp]`
+
 Directive | Use
 --------- | ---
 `acme_tiny_wp_path` | The full path to the `acme_tiny_wp.py` script.
