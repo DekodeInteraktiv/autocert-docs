@@ -99,15 +99,17 @@ Directive | Use
 
 `[acme-tiny-wp]`
 
-Directive | Use
---------- | ---
-`acme_tiny_wp_path` | The full path to the `acme_tiny_wp.py` script.
-`openssl_conf` | The full path to your OpenSSL configurations file. Usually `/etc/ssl/openssl.cnf`
-`wp_url` | The URL to your WordPress installation where WP ACME is installed.
-`wp_secret` | The shared secret with WP ACME.
-`server` | The ACME server to use. Use `https://acme-staging.api.letsencrypt.org/directory` for staging/testing and `https://acme-v01.api.letsencrypt.org/directory` for production.
-`cert_key` | The full path to where the private certificate key is stored. If it doesn’t exists, it will be created for you.
-`cert_file` | The full path to where the certificate will be stored.
+Directive | Use | Default value
+--------- | --- | -------------
+`acme_tiny_wp_path` | The full path to the `acme_tiny_wp.py` script. | No default value. Must be provided.
+`wp_url` | The URL to your WordPress installation where WP ACME is installed. | No default value. Must be provided.
+`wp_secret` | The shared secret with WP ACME. | No default value. Must be provided.
+`openssl_conf` | The full path to your OpenSSL configurations file. Usually `/etc/ssl/openssl.cnf` | /etc/ssl/openssl.cnf
+`server` | The ACME server to use. Use `https://acme-staging.api.letsencrypt.org/directory` for staging/testing and `https://acme-v01.api.letsencrypt.org/directory` for production. | https://acme-v01.api.letsencrypt.org
+`cert_key` | The full path to where the private certificate key is stored. If it doesn’t exists, it will be created for you. | /etc/ssl/acme/privatekey.pem
+`cert_file` | The full path to where the certificate will be stored. | /etc/ssl/acme/cert.pem
+`chain_file` | The full path to where the intermediate certificate will be stored. | /etc/ssl/acme/chain.pem
+`fullchain_file` | The full path to where the full chain will be stored. | /etc/ssl/acme/fullshain.pem
 `cert_csr` | The full path to where the CSR will be stored.  
 `acme_account_key` | The full path to where the ACME account key is stored. If it doesn’t exists, it will be created for you.
 
