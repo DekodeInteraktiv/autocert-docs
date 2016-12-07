@@ -117,3 +117,7 @@ Run the autocert-server script:
 `$ sudo ./autocert.php -c my-config.ini`
 
 To have the process fully automated, put the script in a crontab. Run it every minute if you like.
+
+## Contributions
+Contributions are very welcome. Please see each individual sub-project for issues, PRs and other contributions.
+
