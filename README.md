@@ -19,7 +19,7 @@ The project consists of several sub-projects. Some of these may be used alone, w
 * [autocert-server](https://github.com/dss-web/autocert-server) – Fetches domain names from WP and installs certificates.
 
 ### Discontinued sub-projects
-* [WP auth plugin for Certbot] (no longer maintained) – Use WordPress for ACME challenges with Certbot.
+* [WP auth plugin for Certbot](https://github.com/dss-web/certbot-wordpress) – Use WordPress for ACME challenges with Certbot (no longer maintained).
 
 ### ACME challenge solving with WordPress
 The default challenge solving (domain verification) by ACME clients is to put files in a predetermined directory from the webserver’s document root (`/.well-known/acme-challenge`). However, if you have a web node cluster or are running the certification acquirement process from a machine that is not part of your web cluster, you may run into issues.
