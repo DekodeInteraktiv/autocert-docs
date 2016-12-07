@@ -1,0 +1,6 @@
+{
+  "name": "Autocert-docs",
+  "tagline": "Automated installation of TLS certificates for WordPress multisites",
+  "body": "### Audience\r\nYou should have a grasp of what DevOps is and be comfortable running web servers for WordPress.\r\n\r\n### Project Outline\r\nThe project consists of several sub-projects. Some of these may be used alone, with the other subprojects or with 3rd party projects.\r\n\r\n### Goal\r\nWe are running a WordPress multisite network with tens of subsites with domain mapping, and are both removing and adding sites on a regular basis. We want to have TLS certificates for those domains installed automatically. Extending the current project to support hundreds or thousands of sites should be possible without too much effort.\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
