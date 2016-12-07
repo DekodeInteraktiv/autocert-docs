@@ -67,7 +67,7 @@ $ sudo chown -R root:root /etc/ssl/acme
 Copy the autocert-server example configuration and modify it with your info. Remember to make it readable by root only.
 ```
 $ sudo cp example.ini my-config.ini  
-$ chmod 0600 my-config.php  
+$ sudo chmod 0600 my-config.php  
 $ sudo chown root:root my-config.php
 ```
 
