@@ -14,9 +14,9 @@ The project consists of several sub-projects. Some of these may be used alone, w
 
 ### Current sub-projects
 * [WP ACME](https://github.com/dss-web/wp-acme) – Answers ACME challenges in WordPress.
-* [acme-tiny-wp](https://github.com/DekodeInteraktiv/acme-tiny-wp) – Fetches certificates from an ACME compatible CA (e.g. Let’s Encrypt). Use WordPress for ACME challenges.
+* [acme-tiny-wp](https://github.com/DekodeInteraktiv/acme-tiny-wp) – Fetches certificates from an ACME compatible CA (e.g. Let’s Encrypt). Uses WordPress (i.e. WP ACME) for answering the ACME challenges.
 * [WP Autocert](https://github.com/dss-web/wp-autocert) – Provides us with a list of domains and updates them to use https.
-* [autocert-server](https://github.com/dss-web/autocert-server) – Fetches domain names from WP and installs certificates.
+* [autocert-server](https://github.com/dss-web/autocert-server) – Fetches domain names from WP (i.e. WP Autocert) and installs certificates (by configuring and running acme-tiny-wp).
 
 ### Discontinued sub-projects
 * [WP auth plugin for Certbot](https://github.com/dss-web/certbot-wordpress) – Use WordPress for ACME challenges with Certbot (no longer maintained).
