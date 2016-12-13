@@ -53,7 +53,7 @@ There is no user interface or anything else to configure for this plugin.
 Install [WP Autocert](https://github.com/dss-web/wp-autocert), go to Settings > WP Autocrat (`/wp-admin/network/settings.php?page=wp-autocert`), select the domains you want to get certificates for, and note the API Key. It will be used as a shared secret when communicating with the autocert-server script.
 
 ### Director node setup
-On your server node that will function as your director node (it can even be your local machine), download [acme-tiny-wp](https://github.com/DekodeInteraktiv/acme-tiny-wp) and [autocert-server](https://github.com/dss-web/autocert-server).
+On your server node that will function as your director node (it can be one of the web nodes, an external server or even be your local machine), download [acme-tiny-wp](https://github.com/DekodeInteraktiv/acme-tiny-wp) and [autocert-server](https://github.com/dss-web/autocert-server).
 
 Create a Let’s Encrypt account key (put it wherever it suites you, but make it readable by root only):
 ```
