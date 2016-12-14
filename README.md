@@ -50,7 +50,7 @@ Define a secret key that will be shared between WordPress and the ACME client. Y
 `define( 'WP_ACME_SECRET_KEY', 'your-secret-key' );` to your `wp-config.php` or set a site option named `wp_acme_secret_key`, e.g. by doing `update_site_option( 'wp_acme_secret_key', 'your-secret-key' );`
 There is no user interface or anything else to configure for this plugin.
 
-Install [WP Autocert](https://github.com/dss-web/wp-autocert), go to Settings > WP Autocrat (`/wp-admin/network/settings.php?page=wp-autocert`), select the domains you want to get certificates for, and note the API Key. It will be used as a shared secret when communicating with the autocert-server script.
+Install [WP Autocert](https://github.com/dss-web/wp-autocert), go to Settings > WP Autocert (`/wp-admin/network/settings.php?page=wp-autocert`), select the domains you want to get certificates for, and note the API Key. It will be used as a shared secret when communicating with the autocert-server script.
 
 ### Director node setup
 On your server node that will function as your director node (it can be one of the web nodes, an external server or even be your local machine), download [acme-tiny-wp](https://github.com/DekodeInteraktiv/acme-tiny-wp) and [autocert-server](https://github.com/dss-web/autocert-server).
@@ -67,8 +67,8 @@ $ sudo chown -R root:root /etc/ssl/acme
 Copy the autocert-server example configuration and modify it with your info. Remember to make it readable by root only.
 ```
 $ sudo cp example.ini my-config.ini  
-$ sudo chmod 0600 my-config.php  
-$ sudo chown root:root my-config.php
+$ sudo chmod 0600 my-config.ini  
+$ sudo chown root:root my-config.ini
 ```
 
 Install the autocert-server dependencies:
